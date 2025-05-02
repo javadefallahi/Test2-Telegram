@@ -30,19 +30,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+      position: relative;
     }
     
     .container {
       max-width: 800px;
       width: 100%;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 30px;
       background-color: rgba(255, 255, 255, 0.85);
       border-radius: 15px;
       box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       position: relative;
+      min-height: auto;
     }
     
     h1 {
@@ -149,6 +152,22 @@
       .container {
         padding: 20px;
         margin: 10px;
+        min-height: auto;
+      }
+      
+      body {
+        padding: 10px;
+      }
+      
+      #welcome-screen {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      #start-game {
+        margin-top: 20px;
+        position: relative;
       }
       
       h1 {
