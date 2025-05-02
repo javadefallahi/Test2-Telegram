@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سقوط – هزارتوی پول</title>
+  <style>
+    @font-face {
+      font-family: 'BKoodak';
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/fonts-persian/1.0.0/BKoodak.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'BKoodak', 'Tahoma', sans-serif;
+      background: linear-gradient(135deg, #f5f0e5 0%, #e8e0d5 100%);
+      min-height: 100vh;
+      color: #453c36;
+      line-height: 1.6;
+      direction: rtl;
+      text-align: right;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #6d4c41;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      color: #5d4037;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    
+    p {
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+    }
+    
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #d7ccc8;
+      border-radius: 8px;
+      font-family: 'BKoodak', 'Tahoma', sans-serif;
+      font-size: 1.1rem;
+      direction: rtl;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      margin: 15px 0;
+      background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: 'BKoodak', 'Tahoma', sans-serif;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+    
+    .slide-in {
+      animation: slideIn 0.6s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .scene-content {
+      min-height: 300px;
+      margin-bottom: 20px;
+    }
+    
+    .ending-container {
+      text-align: center;
+      padding: 30px 0;
+    }
+    
+    .attributes {
+      display: none;
+    }
+    
+    .persona {
+      font-size: 2rem;
+      color: #6d4c41;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .restart-btn {
+      background: linear-gradient(135deg, #d7ccc8 0%, #bcaaa4 100%);
+      color: #5d4037;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        padding: 12px 16px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container fade-in" id="game-container">
+    <h1>سقوط – هزارتوی پول</h1>
+    <div id="game-content">
+      <!-- Initial welcome screen -->
+      <div id="welcome-screen">
+        <p>به بازی «سقوط – هزارتوی پول» خوش آمدید. در این سفر، شما با تصمیم‌هایی مواجه می‌شوید که روی سرنوشت مالی و شخصی شما تأثیر می‌گذارند.</p>
+        <p>لطفاً قبل از شروع، اطلاعات زیر را وارد کنید:</p>
+        
+        <label for="age">سن:</label>
+        <input type="text" id="age" placeholder="سن خود را وارد کنید">
+        
+        <label for="gender">جنسیت:</label>
+        <select id="gender">
+          <option value="">انتخاب کنید</option>
+          <option value="مرد">مرد</option>
+          <option value="زن">زن</option>
+          <option value="سایر">سایر</option>
+          <option value="ترجیح می‌دهم نگویم">ترجیح می‌دهم نگویم</option>
+        </select>
+        
+        <button class="btn" id="start-game">شروع بازی</button>
+      </div>
+      
+      <!-- Game screen (initially hidden) -->
+      <div id="game-screen" style="display: none;">
+        <div class="scene-content" id="scene-content"></div>
+        <div id="choices-container"></div>
+      </div>
+      
+      <!-- Hidden attributes tracking -->
+      <div class="attributes">
+        <span id="impulsivity">0</span>
+        <span id="morality">0</span>
+        <span id="creativity">0</span>
+        <span id="clarity">0</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DOM elements
+    const welcomeScreen = document.getElementById("welcome-screen");
+    const gameScreen = document.getElementById("game-screen");
+    const startButton = document.getElementById("start-game");
+    const sceneContent = document.getElementById("scene-content");
+    const choicesContainer = document.getElementById("choices-container");
+    
+    // Initialize game
+    document.addEventListener('DOMContentLoaded', function() {
+      startButton.addEventListener('click', startGame);
+    });
+    
+    // Start game function
+    function startGame() {
+      const age = document.getElementById("age").value;
+      const gender = document.getElementById("gender").value;
+      
+      if (!age || !gender) {
+        alert("لطفاً سن و جنسیت خود را وارد کنید.");
+        return;
+      }
+      
+      // Set player information
+      gameData.player.age = age;
+      gameData.player.gender = gender;
+      
+      // Hide welcome screen, show game screen
+      welcomeScreen.style.display = "none";
+      gameScreen.style.display = "block";
+      
+      // Load first scene
+      loadScene("start");
+    }
+    
+    // Load scene function
+    function loadScene(sceneId) {
+      const scene = gameData.scenes[sceneId];
+      
+      if (!scene) {
+        console.error("Scene not found: " + sceneId);
+        return;
+      }
+      
+      // Record path
+      gameData.player.path.push(sceneId);
+      
+      // Update scene content
+      sceneContent.innerHTML = `<h2>${scene.title}</h2>${scene.content}`;
+      sceneContent.classList.add("slide-in");
+      
+      // Clear choices container
+      choicesContainer.innerHTML = "";
+      
+      // If this is an ending scene
+      if (scene.isEnding) {
+        // Add persona and ending type
+        const persona = calculatePersona();
+        const endingType = calculateEnding();
+        sceneContent.innerHTML += `
+          <div class="persona">شخصیت شما: ${persona}</div>
+          <div class="ending-type">نوع پایان: ${endingType}</div>
+        `;
+        
+        // Add restart button
+        const restartButton = document.createElement("button");
+        restartButton.className = "btn restart-btn";
+        restartButton.textContent = "شروع مجدد بازی";
+        restartButton.addEventListener("click", function() {
+          // Reset player data
+          gameData.player = {
+            age: gameData.player.age,
+            gender: gameData.player.gender,
+            impulsivity: 0,
+            morality: 0,
+            creativity: 0,
+            clarity: 0,
+            path: []
+          };
+          
+          // Load first scene
+          loadScene("start");
+        });
+        
+        choicesContainer.appendChild(restartButton);
+        return;
+      }
+      
+      // For non-ending scenes, create choice buttons
+      scene.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.className = "btn";
+        button.textContent = choice.text;
+        
+        button.addEventListener("click", function() {
+          // Update attributes
+          if (choice.attributes) {
+            for (const [attr, value] of Object.entries(choice.attributes)) {
+              gameData.player[attr] += value;
+            }
+          }
+          
+          // Load next scene
+          loadScene(choice.nextScene);
+        });
+        
+        choicesContainer.appendChild(button);
+      });
+    }
+    
+    // Calculate personality type based on attributes
+    function calculatePersona() {
+      const { impulsivity, morality, creativity, clarity } = gameData.player;
+      
+      if (impulsivity > 5 && clarity < 0) {
+        return "آتش‌افروز";
+      } else if (morality > 5 && clarity > 3) {
+        return "هوشیار";
+      } else if (creativity > 5 && morality > 0) {
+        return "بذرکار";
+      } else if (clarity > 5 && impulsivity < 0) {
+        return "ناظر";
+      } else {
+        return "عابر";
+      }
+    }
+    
+    // Calculate ending based on attributes and path
+    function calculateEnding() {
+      const { morality, clarity } = gameData.player;
+      
+      if (clarity < 0) {
+        return "مه‌آلود";
+      } else if (morality > 5) {
+        return "سخاوتمند";
+      } else if (morality < -3) {
+        return "سودجو";
+      } else if (clarity > 5) {
+        return "بصیر";
+      } else {
+        return "متعادل";
+      }
+    }
+    
+    // Game data structure
+    const gameData = {
+      // Player information
+      player: {
+        age: null,
+        gender: null,
+        impulsivity: 0,
+        morality: 0,
+        creativity: 0,
+        clarity: 0,
+        path: []
+      },
+      
+      // Game scenes
+      scenes: {
+        // Level 1: The Beginning
+        "start": {
+          title: "کشف غیرمنتظره",
+          content: `<p>شما در مسیر همیشگی بازگشت از محل کار، از کنار یک کوچه‌ی باریک عبور می‌کنید. ناگهان صدایی آشنا توجه‌تان را جلب می‌کند. صدای افتادن چیزی فلزی روی زمین.</p>
+          <p>با کنجکاوی وارد کوچه می‌شوید و در گوشه‌ای تاریک، کیف چرمی قدیمی‌ای را می‌بینید. کیف نیمه‌باز است و محتویات آن به بیرون ریخته. با نزدیک شدن، چشمانتان گرد می‌شود. بسته‌های اسکناس...</p>
+          <p>قلبتان به شدت می‌تپد. اطراف را نگاه می‌کنید. هیچ‌کس در کوچه نیست. با خودتان فکر می‌کنید: «این پول از کجا آمده؟ صاحبش کجاست؟»</p>`,
+          choices: [
+            {
+              text: "کیف و تمام پول‌ها را برداشته و سریع از آنجا دور شوید",
+              nextScene: "take_all",
+              attributes: { impulsivity: 2, morality: -2, clarity: -1 }
+            },
+            {
+              text: "کیف را بررسی کنید تا مشخصات صاحب آن را پیدا کنید",
+              nextScene: "check_owner",
+              attributes: { impulsivity: -1, morality: 2, clarity: 1 }
+            },
+            {
+              text: "مقداری از پول را بردارید و بقیه را همانجا رها کنید",
+              nextScene: "take_some",
+              attributes: { impulsivity: 1, morality: -1, creativity: 1 }
+            }
+          ]
+        },
+        
+        // Level 1: Branches
+        "take_all": {
+          title: "تصمیم سریع",
+          content: `<p>با دستانی لرزان، کیف و تمام پول‌ها را برمی‌دارید. حجم پول بیشتر از آن چیزی است که تصور می‌کردید. هیجان و ترس همزمان وجودتان را فرا می‌گیرد.</p>
+          <p>در حالی که به سرعت از کوچه خارج می‌شوید، صدایی در ذهنتان تکرار می‌شود: «این کار درست است؟» اما فکر پول‌های داخل کیف، وسوسه‌انگیزتر از هر چیز دیگری است.</p>
+          <p>به خانه که می‌رسید، در را قفل می‌کنید و محتویات کیف را روی میز می‌ریزید. علاوه بر پول‌ها، یک دفترچه کوچک، یک کلید و یک کارت ویزیت داخل کیف است. کارت متعلق به شرکتی است با نام «سرمایه‌گذاری آینده‌نگر».</p>`,
+          choices: [
+            {
+              text: "پول‌ها را پنهان کنید و به کارت و دفترچه توجهی نکنید",
+              nextScene: "hide_money",
+              attributes: { impulsivity: 1, clarity: -2 }
+            },
+            {
+              text: "دفترچه را بررسی کنید تا اطلاعات بیشتری به دست آورید",
+              nextScene: "check_notebook",
+              attributes: { clarity: 2, creativity: 1 }
+            },
+            {
+              text: "به آدرس روی کارت ویزیت بروید تا بفهمید ماجرا چیست",
+              nextScene: "visit_company",
+              attributes: { impulsivity: -1, creativity: 2, clarity: 1 }
+            }
+          ]
+        },
+        
+        "check_owner": {
+          title: "جستجوی صاحب",
+          content: `<p>با احتیاط کیف را باز می‌کنید. علاوه بر بسته‌های پول، یک کارت شناسایی، چند کارت ویزیت و یک کلید داخل آن است. کارت شناسایی متعلق به آقای «سهراب معینی» است، مدیرعامل شرکت «سرمایه‌گذاری آینده‌نگر».</p>
+          <p>روی یکی از کارت‌های ویزیت، شماره تلفن همراهی نوشته شده است. با تردید به شماره نگاه می‌کنید. پول زیادی داخل کیف است، شاید بیش از صد میلیون تومان.</p>
+          <p>صدای پایی از انتهای کوچه به گوش می‌رسد. تصمیم سختی پیش روی شماست.</p>`,
+          choices: [
+            {
+              text: "با شماره روی کارت تماس بگیرید",
+              nextScene: "call_owner",
+              attributes: { morality: 2, impulsivity: -1 }
+            },
+            {
+              text: "کیف را با خود ببرید و بعداً تصمیم بگیرید",
+              nextScene: "take_decide_later",
+              attributes: { morality: -1, clarity: -1, impulsivity: 1 }
+            },
+            {
+              text: "کیف را به نزدیک‌ترین کلانتری تحویل دهید",
+              nextScene: "police_station",
+              attributes: { morality: 3, clarity: 1, impulsivity: -2 }
+            }
+          ]
+        },
+        
+        "take_some": {
+          title: "معامله با وجدان",
+          content: `<p>با خودتان کلنجار می‌روید. شاید برداشتن همه پول کار درستی نباشد، اما چرا کمی از آن سهم شما نباشد؟</p>
+          <p>با دستانی لرزان، چند بسته اسکناس را برمی‌دارید و در جیب می‌گذارید. حدود بیست میلیون تومان. مابقی پول‌ها را داخل کیف می‌گذارید و کیف را همانجا رها می‌کنید.</p>
+          <p>در حال دور شدن از محل، احساسات متناقضی دارید. از یک طرف، خوشحالید که پولی ناگهانی نصیبتان شده، از طرف دیگر، عذاب وجدان رهایتان نمی‌کند.</p>`,
+          choices: [
+            {
+              text: "پول را خرج نیازهای ضروری خود کنید",
+              nextScene: "spend_needs",
+              attributes: { morality: -1, clarity: 1 }
+            },
+            {
+              text: "برگردید و کیف را هم بردارید",
+              nextScene: "go_back_take_all",
+              attributes: { impulsivity: 2, morality: -2 }
+            },
+            {
+              text: "پول را در محلی امن پنهان کنید و منتظر بمانید",
+              nextScene: "hide_wait",
+              attributes: { clarity: -1, creativity: 1 }
+            }
+          ]
+        },
+
+        // Level 2: Branches from take_all
+        "hide_money": {
+          title: "پول‌های پنهان",
+          content: `<p>تصمیم می‌گیرید پول‌ها را پنهان کنید و به بقیه محتویات کیف توجهی نکنید. چه اهمیتی دارد این پول از کجا آمده؟ الان مال شماست.</p>
+          <p>پول‌ها را می‌شمارید. حدود ۱۲۰ میلیون تومان است. مبلغی که می‌تواند زندگی‌تان را تغییر دهد.</p>
+          <p>شب هنگام، صدای زنگ تلفن همراهتان شما را از خواب می‌پراند. شماره‌ای ناشناس است. با تردید پاسخ می‌دهید.</p>
+          <p>صدایی خشن می‌گوید: «می‌دونم کیف رو تو برداشتی. فردا ساعت ۱۰ صبح، پارک سروناز، نیمکت آخر. تنها بیا.»</p>`,
+          choices: [
+            {
+              text: "به قرار بروید و کیف را برگردانید",
+              nextScene: "return_briefcase",
+              attributes: { morality: 1, impulsivity: -1, clarity: 1 }
+            },
+            {
+              text: "به قرار نروید و پول‌ها را نگه دارید",
+              nextScene: "keep_money_danger",
+              attributes: { impulsivity: 1, morality: -2, clarity: -1 }
+            },
+            {
+              text: "با پلیس تماس بگیرید و ماجرا را تعریف کنید",
+              nextScene: "call_police_scared",
+              attributes: { morality: 2, clarity: 2, impulsivity: -1 }
+            }
+          ]
+        },
+        
+        "check_notebook": {
+          title: "راز دفترچه",
+          content: `<p>کنجکاوی بر ترستان غلبه می‌کند. دفترچه را باز می‌کنید. صفحات آن پر است از اعداد، کدها و یادداشت‌های کوتاه. به نظر می‌رسد این دفترچه حاوی اطلاعاتی درباره معاملات مالی مشکوک است.</p>
+          <p>در یکی از صفحات، نقشه‌ای کوچک با آدرسی در حاشیه شهر رسم شده و زیر آن نوشته شده: «محل نگهداری اسناد اصلی - ۱۲ اردیبهشت - ساعت ۲۳»</p>
+          <p>امروز ۱۱ اردیبهشت است. یعنی این قرار برای فرداست؟</p>
+          <p>ناگهان تلفن همراهتان زنگ می‌خورد. شماره‌ای ناشناس. قلبتان به شدت می‌تپد.</p>`,
+          choices: [
+            {
+              text: "پاسخ دهید و خودتان را به نام صاحب کیف معرفی کنید",
+              nextScene: "answer_pretend",
+              attributes: { creativity: 2, impulsivity: 1, morality: -1 }
+            },
+            {
+              text: "به آدرس نوشته شده در دفترچه بروید",
+              nextScene: "go_to_address",
+              attributes: { clarity: 1, creativity: 1, impulsivity: 1 }
+            },
+            {
+              text: "پول‌ها را بردارید و دفترچه و کیف را جایی رها کنید",
+              nextScene: "abandon_evidence",
+              attributes: { clarity: -1, morality: -1 }
+            }
+          ]
+        },
+        
+        "visit_company": {
+          title: "شرکت مرموز",
+          content: `<p>فردا صبح به آدرس روی کارت ویزیت می‌روید. «شرکت سرمایه‌گذاری آینده‌نگر» در طبقه دهم یک برج تجاری مدرن قرار دارد.</p>
+          <p>با تردید وارد دفتر شرکت می‌شوید. منشی با دیدن شما لبخند می‌زند: «بفرمایید، چطور می‌تونم کمکتون کنم؟»</p>
+          <p>قبل از اینکه فرصت توضیح پیدا کنید، مردی میانسال با کت و شلوار شیک از اتاقی بیرون می‌آید. با دیدن کیف در دست شما، چشمانش برق می‌زند.</p>
+          <p>«به به، شما باید فرشته نجات من باشید! من سهراب معینی هستم. اون کیف من بود که دیروز گم کردم.»</p>`,
+          choices: [
+            {
+              text: "کیف را به او بدهید و درباره پول‌ها چیزی نگویید",
+              nextScene: "return_quietly",
+              attributes: { morality: -2, clarity: -1 }
+            },
+            {
+              text: "حقیقت را بگویید و اعتراف کنید که پول‌ها را دیده‌اید",
+              nextScene: "tell_truth",
+              attributes: { morality: 2, clarity: 2, impulsivity: -1 }
+            },
+            {
+              text: "بپرسید این مبلغ زیاد پول برای چه کاری استفاده می‌شود",
+              nextScene: "question_money",
+              attributes: { clarity: 1, creativity: 1 }
+            }
+          ]
+        },
+
+        // Level 2: Branches from check_owner
+        "call_owner": {
+          title: "تماس سرنوشت‌ساز",
+          content: `<p>با دستانی لرزان، شماره روی کارت را می‌گیرید. بعد از چند بوق، صدای مردی میانسال در گوشی می‌پیچد.</p>
+          <p>«بله، بفرمایید؟»</p>
+          <p>با صدایی آرام توضیح می‌دهید که کیفی پیدا کرده‌اید که ظاهراً متعلق به اوست. مکثی طولانی در آن سوی خط ایجاد می‌شود.</p>
+          <p>«واقعاً؟ خدا شما رو رسوند! من سهراب معینی هستم. اون کیف حاوی مدارک بسیار مهمی برای شرکتمه. می‌تونم همین الان راننده‌م رو بفرستم دنبالش.»</p>`,
+          choices: [
+            {
+              text: "قبول کنید و آدرس بدهید تا راننده کیف را بگیرد",
+              nextScene: "agree_driver",
+              attributes: { impulsivity: 1, clarity: -1 }
+            },
+            {
+              text: "پیشنهاد دهید خودتان کیف را به شرکت ببرید",
+              nextScene: "offer_deliver",
+              attributes: { clarity: 1, creativity: 1 }
+            },
+            {
+              text: "بگویید کیف را به کلانتری تحویل داده‌اید",
+              nextScene: "lie_police",
+              attributes: { morality: -1, creativity: 2, clarity: -1 }
+            }
+          ]
+        },
+        
+        "take_decide_later": {
+          title: "تعلیق اخلاقی",
+          content: `<p>کیف را برمی‌دارید و با قدم‌های سریع از کوچه خارج می‌شوید. قلبتان به شدت می‌تپد و مدام به اطراف نگاه می‌کنید تا مطمئن شوید کسی شما را ندیده است.</p>
+          <p>در خانه، محتویات کیف را با دقت بررسی می‌کنید. علاوه بر پول‌ها، مدارکی درباره معاملات مالی بزرگ و چند فلش مموری پیدا می‌کنید.</p>
+          <p>از روی کنجکاوی، یکی از فلش‌ها را به کامپیوترتان وصل می‌کنید. فایل‌های رمزگذاری شده، اما در پوشه‌ای باز، تصاویری از ساختمان‌های بزرگ و نقشه‌هایی با علامت‌های عجیب می‌بینید.</p>`,
+          choices: [
+            {
+              text: "فایل‌ها را بیشتر بررسی کنید",
+              nextScene: "investigate_files",
+              attributes: { clarity: 2, creativity: 2 }
+            },
+            {
+              text: "پول‌ها را بردارید و کیف را با بقیه محتویات دور بیندازید",
+              nextScene: "take_money_discard",
+              attributes: { impulsivity: 1, morality: -2 }
+            },
+            {
+              text: "به شرکت «سرمایه‌گذاری آینده‌نگر» مراجعه کنید",
+              nextScene: "visit_company_direct",
+              attributes: { clarity: 1, morality: 1 }
+            }
+          ]
+        },
+        
+        "police_station": {
+          title: "انتخاب درست",
+          content: `<p>تصمیم می‌گیرید کیف را به نزدیک‌ترین کلانتری تحویل دهید. وقتی وارد کلانتری می‌شوید، سربازی شما را به سمت میز افسر نگهبان راهنمایی می‌کند.</p>
+          <p>«من یک کیف پیدا کردم که مقدار زیادی پول داخلش هست،» توضیح می‌دهید و کیف را روی میز می‌گذارید.</p>
+          <p>افسر با تعجب به کیف نگاه می‌کند و بعد از بررسی محتویات آن، سری تکان می‌دهد.</p>
+          <p>«این کیف مربوط به پرونده‌ای است که ما روش کار می‌کنیم. شرکت سرمایه‌گذاری آینده‌نگر مظنون به پولشویی و کلاهبرداری است. شما کار بسیار مهمی کردید.»</p>`,
+          choices: [
+            {
+              text: "همکاری کامل با پلیس و ارائه جزئیات دقیق محل پیدا کردن کیف",
+              nextScene: "cooperate_police",
+              attributes: { morality: 2, clarity: 2 }
+            },
+            {
+              text: "نگران شوید و بپرسید آیا برای شما دردسر نمی‌شود",
+              nextScene: "worry_trouble",
+              attributes: { impulsivity: 1, clarity: -1 }
+            },
+            {
+              text: "درخواست جایزه یا پاداش برای پیدا کردن کیف کنید",
+              nextScene: "ask_reward",
+              attributes: { morality: -1, impulsivity: 1 }
+            }
+          ]
+        },
+
+        // Level 2: Branches from take_some
+        "spend_needs": {
+          title: "تصمیم عملی",
+          content: `<p>تصمیم می‌گیرید پول را برای نیازهای ضروری خود خرج کنید. بدهی‌های کوچک، تعمیر ضروری خانه، و خرید چند مورد که مدت‌ها به تعویق انداخته بودید.</p>
+          <p>با هر خرید، کمی از عذاب وجدانتان کاسته می‌شود. شاید این پول واقعاً سرنوشت بوده که سر راهتان قرار گرفته.</p>
+          <p>یک هفته بعد، در مسیر بازگشت به خانه، پوستری روی دیوار توجهتان را جلب می‌کند. عکس همان کیف چرمی با این نوشته: «جایزه نقدی برای یابنده این کیف. با شماره زیر تماس بگیرید.» شماره تلفن زیر پوستر متعلق به همان شرکت سرمایه‌گذاری آینده‌نگر است.</p>`,
+          choices: [
+            {
+              text: "با شماره تماس بگیرید و بگویید مقداری از پول را برداشته‌اید",
+              nextScene: "confess_partial",
+              attributes: { morality: 1, clarity: 1, impulsivity: -1 }
+            },
+            {
+              text: "پوستر را نادیده بگیرید و به زندگی عادی ادامه دهید",
+              nextScene: "ignore_poster",
+              attributes: { clarity: -1 }
+            },
+            {
+              text: "تحقیق بیشتری درباره شرکت سرمایه‌گذاری آینده‌نگر انجام دهید",
+              nextScene: "research_company",
+              attributes: { creativity: 2, clarity: 1 }
+            }
+          ]
+        },
+        
+        "go_back_take_all": {
+          title: "وسوسه نهایی",
+          content: `<p>وسوسه پول بیشتر رهایتان نمی‌کند. تصمیم می‌گیرید برگردید و کیف را هم بردارید.</p>
+          <p>وقتی به کوچه برمی‌گردید، با صحنه غیرمنتظره‌ای روبرو می‌شوید. مردی کت و شلواری در حال بررسی محل است. با دیدن شما، سرش را بالا می‌آورد.</p>
+          <p>«شما اینجا چیزی پیدا نکردید؟» می‌پرسد، چشمانش مستقیم به جیب شما خیره شده که برآمدگی بسته‌های پول در آن مشخص است.</p>`,
+          choices: [
+            {
+              text: "دروغ بگویید و سریع از آنجا دور شوید",
+              nextScene: "lie_escape",
+              attributes: { impulsivity: 1, morality: -2, clarity: -1 }
+            },
+            {
+              text: "اعتراف کنید که مقداری پول برداشته‌اید",
+              nextScene: "confess_some",
+              attributes: { morality: 1, clarity: 1 }
+            },
+            {
+              text: "بپرسید او کیست و چرا دنبال کیف می‌گردد",
+              nextScene: "question_man",
+              attributes: { creativity: 1, clarity: 1 }
+            }
+          ]
+        },
+        
+        "hide_wait": {
+          title: "انتظار مخفیانه",
+          content: `<p>پول را در محلی امن در خانه پنهان می‌کنید و تصمیم می‌گیرید مدتی صبر کنید. شاید خبری در رسانه‌ها منتشر شود یا اتفاقی بیفتد که به شما نشان دهد این پول متعلق به کیست.</p>
+          <p>سه روز می‌گذرد و خبری نمی‌شود. در روز چهارم، مقاله‌ای در خبرگزاری‌ها توجهتان را جلب می‌کند: «تحقیقات پلیس درباره شرکت سرمایه‌گذاری آینده‌نگر به اتهام پولشویی».</p>
+          <p>با نگرانی مقاله را می‌خوانید. ظاهراً پولی که شما پیدا کرده‌اید ممکن است مرتبط با این پرونده باشد.</p>`,
+          choices: [
+            {
+              text: "پول را به پلیس تحویل دهید و همه چیز را توضیح دهید",
+              nextScene: "surrender_money",
+              attributes: { morality: 2, clarity: 2, impulsivity: -1 }
+            },
+            {
+              text: "به گاوصندوق بانک بروید و پول را آنجا نگهداری کنید",
+              nextScene: "bank_safe",
+              attributes: { creativity: 1, clarity: -1 }
+            },
+            {
+              text: "پول را خرج کنید قبل از اینکه دیر شود",
+              nextScene: "spend_quickly",
+              attributes: { impulsivity: 2, morality: -2 }
+            }
+          ]
+        },
+
+        // Level 3: A few examples of next level branches
+        "return_briefcase": {
+          title: "مواجهه در پارک",
+          content: `<p>صبح روز بعد، با دلهره به پارک سروناز می‌روید. کیف در دستانتان سنگینی می‌کند. به نیمکت آخر که می‌رسید، مردی میانسال با کت چرم قهوه‌ای نشسته است.</p>
+          <p>با دیدن شما و کیف، لبخندی می‌زند و اشاره می‌کند بنشینید.</p>
+          <p>«ممنونم که اومدی. من سهراب هستم. اون کیف برای شرکت من خیلی مهمه.»</p>
+          <p>شما با تردید کیف را به سمتش می‌گیرید، اما او دستش را بالا می‌آورد.</p>
+          <p>«صبر کن. تو می‌تونستی این پول رو برداری و بری، اما اینجایی. چرا؟»</p>`,
+          choices: [
+            {
+              text: "بگویید که کار درست همین بوده",
+              nextScene: "moral_choice",
+              attributes: { morality: 2, clarity: 1 }
+            },
+            {
+              text: "بگویید ترسیده‌اید و نمی‌خواستید درگیر دردسر شوید",
+              nextScene: "fear_trouble",
+              attributes: { clarity: -1 }
+            },
+            {
+              text: "بپرسید این پول برای چیست و چرا این‌قدر مهم است",
+              nextScene: "ask_purpose",
+              attributes: { creativity: 1, clarity: 1 }
+            }
+          ]
+        },
+
+        // Level 3 continued and more scenes would be added here
+        "moral_choice": {
+          title: "انتخاب اخلاقی",
+          content: `<p>«من فکر کردم کار درست همینه. پول متعلق به من نبود.»</p>
+          <p>سهراب با دقت به شما نگاه می‌کند، انگار که می‌خواهد چیزی را در چشمان‌تان بخواند. بعد از مکثی طولانی، لبخند می‌زند.</p>
+          <p>«می‌دونی، آدم‌های زیادی در این دنیا هستند که بدون فکر کردن به عواقبش، اون پول رو برمی‌داشتند. شما انتخاب متفاوتی داشتی.»</p>
+          <p>از جیب کتش پاکتی بیرون می‌آورد و به سمت شما می‌گیرد.</p>
+          <p>«این پاداش صداقت توست. اما من چیز دیگه‌ای هم برات دارم. یک پیشنهاد کاری.»</p>`,
+          choices: [
+            {
+              text: "با تردید پاکت را بگیرید و درباره پیشنهاد کار بپرسید",
+              nextScene: "job_offer",
+              attributes: { creativity: 1, clarity: 1 }
+            },
+            {
+              text: "پاداش را رد کنید و بگویید برای پول این کار را نکرده‌اید",
+              nextScene: "refuse_reward",
+              attributes: { morality: 2, impulsivity: -1 }
+            },
+            {
+              text: "قبل از تصمیم‌گیری، بپرسید شرکت او دقیقاً چه کاری انجام می‌دهد",
+              nextScene: "ask_company",
+              attributes: { clarity: 2, creativity: 1 }
+            }
+          ]
+        },
+        
+        "keep_money_danger": {
+          title: "تصمیم خطرناک",
+          content: `<p>تصمیم می‌گیرید به قرار نروید و پول‌ها را نگه دارید. هر روز که می‌گذرد، اضطراب بیشتری وجودتان را فرا می‌گیرد.</p>
+          <p>یک هفته بعد، در حالی که از محل کار به خانه برمی‌گردید، متوجه می‌شوید کسی شما را تعقیب می‌کند. هر چه سریع‌تر می‌روید، او هم سرعتش را بیشتر می‌کند.</p>
+          <p>در کوچه‌ای تاریک، دستی محکم روی شانه‌تان می‌افتد...</p>`,
+          isEnding: true
+        },
+        
+        "call_police_scared": {
+          title: "تماس با پلیس",
+          content: `<p>با ترس و لرز با پلیس تماس می‌گیرید و ماجرا را تعریف می‌کنید. مأموران پلیس به خانه شما می‌آیند و کیف را تحویل می‌گیرند.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما به عنوان فردی که در کشف این پرونده نقش داشت، مورد تقدیر قرار می‌گیرید.</p>
+          <p>زندگی شما به حالت عادی برمی‌گردد، اما این بار با تجربه‌ای ارزشمند و درس‌های اخلاقی مهم.</p>`,
+          isEnding: true
+        },
+        
+        "answer_pretend": {
+          title: "تظاهر خطرناک",
+          content: `<p>با تردید پاسخ می‌دهید و خودتان را به نام صاحب کیف معرفی می‌کنید. صدایی در آن سوی خط می‌گوید: «آقای معینی؟ شما کجایید؟ ما نگرانتان بودیم.»</p>
+          <p>با دستانی لرزان گوشی را قطع می‌کنید. چند دقیقه بعد، پیامی روی تلفن همراهتان می‌آید: «ما می‌دانیم شما نیستید. فردا ساعت ۱۰، پارک سروناز.»</p>
+          <p>شب را با اضطراب می‌گذرانید. صبح روز بعد، تصمیم سختی پیش روی شماست.</p>`,
+          choices: [
+            {
+              text: "به پارک بروید و حقیقت را بگویید",
+              nextScene: "return_briefcase",
+              attributes: { morality: 2, clarity: 1 }
+            },
+            {
+              text: "فرار کنید و پول‌ها را با خود ببرید",
+              nextScene: "keep_money_danger",
+              attributes: { impulsivity: 2, morality: -2 }
+            },
+            {
+              text: "با پلیس تماس بگیرید",
+              nextScene: "call_police_scared",
+              attributes: { morality: 2, clarity: 2 }
+            }
+          ]
+        },
+        
+        "go_to_address": {
+          title: "ماجراجویی خطرناک",
+          content: `<p>با کنجکاوی به آدرس نوشته شده در دفترچه می‌روید. ساختمانی قدیمی در حاشیه شهر است. با احتیاط وارد می‌شوید.</p>
+          <p>در داخل، چند مرد مسلح مشغول صحبت هستند. قبل از اینکه متوجه حضور شما شوند، صدای آژیر پلیس به گوش می‌رسد.</p>
+          <p>مردها به سرعت اسلحه‌هایشان را بیرون می‌کشند...</p>`,
+          isEnding: true
+        },
+        
+        "abandon_evidence": {
+          title: "فرار از حقیقت",
+          content: `<p>تصمیم می‌گیرید پول‌ها را بردارید و بقیه مدارک را رها کنید. با عجله از محل دور می‌شوید.</p>
+          <p>چند روز بعد، خبر انفجار در ساختمانی در حاشیه شهر در روزنامه‌ها منتشر می‌شود. عکس ساختمان، همان آدرسی است که در دفترچه دیده بودید.</p>
+          <p>شما با پول‌های برداشته شده زندگی جدیدی را شروع می‌کنید، اما هر شب با کابوس‌های وحشتناک از خواب می‌پرید.</p>`,
+          isEnding: true
+        },
+        
+        "return_quietly": {
+          title: "سکوت مرموز",
+          content: `<p>کیف را به او می‌دهید و درباره پول‌ها چیزی نمی‌گویید. سهراب با لبخند کیف را می‌گیرد و از شما تشکر می‌کند.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. عکس سهراب معینی در میان متهمان است.</p>
+          <p>شما با خودتان فکر می‌کنید که شاید اگر حقیقت را می‌گفتید، می‌توانستید از وقوع جرم‌های بیشتر جلوگیری کنید.</p>`,
+          isEnding: true
+        },
+        
+        "tell_truth": {
+          title: "صداقت پاداش دارد",
+          content: `<p>حقیقت را می‌گویید و اعتراف می‌کنید که پول‌ها را دیده‌اید. سهراب با تعجب به شما نگاه می‌کند.</p>
+          <p>«شما می‌تونستی این پول رو بردارید و بری، اما اینجا هستید و حقیقت رو می‌گید. این نشانه شخصیت قوی شماست.»</p>
+          <p>او پیشنهاد همکاری در شرکتش را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی جدیدی را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "question_money": {
+          title: "کنجکاوی پاداش دارد",
+          content: `<p>می‌پرسید این مبلغ زیاد پول برای چه کاری استفاده می‌شود. سهراب مکثی می‌کند و سپس توضیح می‌دهد که این پول برای سرمایه‌گذاری در یک پروژه خیریه است.</p>
+          <p>«ما قصد داریم یک مرکز آموزشی برای کودکان محروم بسازیم. شما با صداقت و کنجکاوی‌تان نشان دادید که می‌توانید بخشی از این پروژه باشید.»</p>
+          <p>شما به عنوان مدیر پروژه استخدام می‌شوید و زندگی معناداری را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "agree_driver": {
+          title: "اعتماد بی‌جا",
+          content: `<p>آدرس خود را می‌دهید و منتظر راننده می‌مانید. چند دقیقه بعد، یک ماشین سیاه جلوی در خانه شما می‌ایستد.</p>
+          <p>راننده کیف را می‌گیرد و به سرعت دور می‌شود. فردا صبح، خبر سرقت مسلحانه از یک بانک در روزنامه‌ها منتشر می‌شود.</p>
+          <p>شما با خودتان فکر می‌کنید که شاید اگر بیشتر احتیاط می‌کردید، می‌توانستید از وقوع این جرم جلوگیری کنید.</p>`,
+          isEnding: true
+        },
+        
+        "offer_deliver": {
+          title: "مسئولیت‌پذیری",
+          content: `<p>پیشنهاد می‌کنید خودتان کیف را به شرکت ببرید. سهراب موافقت می‌کند و آدرس شرکت را به شما می‌دهد.</p>
+          <p>در شرکت، با استقبال گرمی روبرو می‌شوید. سهراب از صداقت و مسئولیت‌پذیری شما تحت تأثیر قرار می‌گیرد.</p>
+          <p>او پیشنهاد همکاری در شرکتش را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی جدیدی را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "lie_police": {
+          title: "دروغ پیامد دارد",
+          content: `<p>می‌گویید کیف را به کلانتری تحویل داده‌اید. سهراب با عصبانیت گوشی را قطع می‌کند.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. عکس شما هم در میان متهمان است.</p>
+          <p>شما با خودتان فکر می‌کنید که اگر حقیقت را می‌گفتید، شاید سرنوشت متفاوتی در انتظارتان بود.</p>`,
+          isEnding: true
+        },
+        
+        "investigate_files": {
+          title: "کشف راز",
+          content: `<p>با دقت فایل‌ها را بررسی می‌کنید. به نظر می‌رسد این مدارک مربوط به یک شبکه پولشویی بزرگ است.</p>
+          <p>با پلیس تماس می‌گیرید و مدارک را تحویل می‌دهید. چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود.</p>
+          <p>شما به عنوان فردی که در کشف این پرونده نقش داشت، مورد تقدیر قرار می‌گیرید و پیشنهاد همکاری با پلیس را دریافت می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "take_money_discard": {
+          title: "فرصت از دست رفته",
+          content: `<p>پول‌ها را برمی‌دارید و بقیه مدارک را دور می‌اندازید. با پول‌های به دست آمده زندگی جدیدی را شروع می‌کنید.</p>
+          <p>چند ماه بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما با خودتان فکر می‌کنید که شاید اگر مدارک را نگه می‌داشتید، می‌توانستید به پلیس کمک کنید.</p>
+          <p>پول‌ها خرج شده‌اند، اما وجدان ناراحت شما همچنان آزارتان می‌دهد.</p>`,
+          isEnding: true
+        },
+        
+        "visit_company_direct": {
+          title: "مواجهه مستقیم",
+          content: `<p>به شرکت «سرمایه‌گذاری آینده‌نگر» می‌روید. در دفتر شرکت، با سهراب معینی ملاقات می‌کنید.</p>
+          <p>او با دیدن مدارک، رنگش می‌پرد. «این مدارک... از کجا آوردید؟»</p>
+          <p>شما توضیح می‌دهید که کیف را پیدا کرده‌اید. سهراب بعد از مکثی طولانی، حقیقت را می‌گوید و از شما می‌خواهد که به پلیس کمک کنید.</p>`,
+          isEnding: true
+        },
+        
+        "cooperate_police": {
+          title: "همکاری با پلیس",
+          content: `<p>با پلیس همکاری کامل می‌کنید و جزئیات دقیق محل پیدا کردن کیف را توضیح می‌دهید.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما به عنوان فردی که در کشف این پرونده نقش داشت، مورد تقدیر قرار می‌گیرید.</p>
+          <p>پلیس پیشنهاد همکاری با شما را می‌دهد و شما زندگی جدیدی را به عنوان مشاور پلیس شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "worry_trouble": {
+          title: "نگرانی بی‌جا",
+          content: `<p>نگران می‌شوید و می‌پرسید آیا برای شما دردسر نمی‌شود. افسر پلیس به شما اطمینان می‌دهد که تحت حمایت قانون هستید.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما با خیال راحت به زندگی عادی خود برمی‌گردید.</p>
+          <p>این تجربه به شما یاد داد که گاهی نگرانی‌های ما بی‌جا هستند و قانون از افراد درستکار حمایت می‌کند.</p>`,
+          isEnding: true
+        },
+        
+        "ask_reward": {
+          title: "درخواست پاداش",
+          content: `<p>درخواست جایزه یا پاداش می‌کنید. افسر پلیس با تعجب به شما نگاه می‌کند.</p>
+          <p>«شما کار درستی انجام دادید، اما درخواست پاداش نشان می‌دهد که انگیزه‌تان کمک به دیگران است، نه پول.»</p>
+          <p>شما با شرمساری از کلانتری خارج می‌شوید. این تجربه به شما یاد داد که گاهی کار درست باید بدون انتظار پاداش انجام شود.</p>`,
+          isEnding: true
+        },
+        
+        "confess_partial": {
+          title: "اعتراف جزئی",
+          content: `<p>با شماره تماس می‌گیرید و اعتراف می‌کنید که مقداری از پول را برداشته‌اید. صدایی در آن سوی خط می‌گوید:</p>
+          <p>«شما با اعتراف کردن نشان دادید که شخصیت درستی دارید. پول باقی‌مانده را برای شما می‌فرستیم.»</p>
+          <p>چند روز بعد، یک چک به نام شما می‌آید. مبلغ آن دقیقاً برابر با پولی است که برنداشته بودید.</p>`,
+          isEnding: true
+        },
+        
+        "ignore_poster": {
+          title: "بی‌تفاوتی",
+          content: `<p>پوستر را نادیده می‌گیرید و به زندگی عادی ادامه می‌دهید. پول‌های برداشته شده خرج می‌شوند و زندگی شما تغییر می‌کند.</p>
+          <p>چند ماه بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما با خودتان فکر می‌کنید که شاید اگر پاسخ می‌دادید، می‌توانستید به پلیس کمک کنید.</p>
+          <p>این تجربه به شما یاد داد که گاهی بی‌تفاوتی می‌تواند فرصت‌های مهم را از ما بگیرد.</p>`,
+          isEnding: true
+        },
+        
+        "research_company": {
+          title: "تحقیق هوشمندانه",
+          content: `<p>درباره شرکت «سرمایه‌گذاری آینده‌نگر» تحقیق می‌کنید. به زودی متوجه می‌شوید که این شرکت درگیر فعالیت‌های مشکوک است.</p>
+          <p>با پلیس تماس می‌گیرید و اطلاعات جمع‌آوری شده را تحویل می‌دهید. چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود.</p>
+          <p>شما به عنوان فردی که در کشف این پرونده نقش داشت، مورد تقدیر قرار می‌گیرید و پیشنهاد همکاری با پلیس را دریافت می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "lie_escape": {
+          title: "فرار با دروغ",
+          content: `<p>دروغ می‌گویید و سریع از آنجا دور می‌شوید. مرد به دنبال شما می‌دود، اما شما موفق به فرار می‌شوید.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. عکس همان مردی که شما را تعقیب کرده بود، در میان متهمان است.</p>
+          <p>شما با خودتان فکر می‌کنید که شاید اگر حقیقت را می‌گفتید، می‌توانستید به پلیس کمک کنید.</p>`,
+          isEnding: true
+        },
+        
+        "confess_some": {
+          title: "اعتراف شجاعانه",
+          content: `<p>اعتراف می‌کنید که مقداری پول برداشته‌اید. مرد با تعجب به شما نگاه می‌کند.</p>
+          <p>«شما با اعتراف کردن نشان دادید که شخصیت درستی دارید. من یک مأمور پلیس هستم و در حال تحقیق درباره این پرونده بودم.»</p>
+          <p>شما به پلیس کمک می‌کنید و زندگی جدیدی را به عنوان مشاور پلیس شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "question_man": {
+          title: "پرسش هوشمند",
+          content: `<p>می‌پرسید او کیست و چرا دنبال کیف می‌گردد. مرد کارت شناسایی خود را نشان می‌دهد.</p>
+          <p>«من یک مأمور پلیس هستم و در حال تحقیق درباره این پرونده بودم. شما با پرسیدن این سؤال نشان دادید که فردی هوشیار هستید.»</p>
+          <p>شما به پلیس کمک می‌کنید و زندگی جدیدی را به عنوان مشاور پلیس شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "surrender_money": {
+          title: "تسلیم پول",
+          content: `<p>پول را به پلیس تحویل می‌دهید و همه چیز را توضیح می‌دهید. مأموران پلیس از صداقت شما تحت تأثیر قرار می‌گیرند.</p>
+          <p>چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما به عنوان فردی که در کشف این پرونده نقش داشت، مورد تقدیر قرار می‌گیرید.</p>
+          <p>پلیس پیشنهاد همکاری با شما را می‌دهد و شما زندگی جدیدی را به عنوان مشاور پلیس شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "bank_safe": {
+          title: "گاوصندوق بانک",
+          content: `<p>به گاوصندوق بانک می‌روید و پول را آنجا نگهداری می‌کنید. چند روز بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود.</p>
+          <p>شما با خودتان فکر می‌کنید که شاید اگر پول را به پلیس تحویل می‌دادید، می‌توانستید به آنها کمک کنید.</p>
+          <p>پول در گاوصندوق باقی می‌ماند و شما هر روز با عذاب وجدان زندگی می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "spend_quickly": {
+          title: "خرج سریع",
+          content: `<p>تصمیم می‌گیرید پول را خرج کنید قبل از اینکه دیر شود. با پول‌های به دست آمده زندگی جدیدی را شروع می‌کنید.</p>
+          <p>چند ماه بعد، خبر دستگیری شبکه پولشویی در روزنامه‌ها منتشر می‌شود. شما با خودتان فکر می‌کنید که شاید اگر پول را نگه می‌داشتید، می‌توانستید به پلیس کمک کنید.</p>
+          <p>پول‌ها خرج شده‌اند، اما وجدان ناراحت شما همچنان آزارتان می‌دهد.</p>`,
+          isEnding: true
+        },
+        
+        "fear_trouble": {
+          title: "ترس از دردسر",
+          content: `<p>می‌گویید ترسیده‌اید و نمی‌خواستید درگیر دردسر شوید. سهراب با دقت به شما نگاه می‌کند.</p>
+          <p>«ترسیدن طبیعی است، اما شما با آمدن به اینجا نشان دادید که شجاعت دارید.»</p>
+          <p>او پیشنهاد همکاری در شرکتش را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی جدیدی را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "ask_purpose": {
+          title: "پرسش هوشمند",
+          content: `<p>می‌پرسید این پول برای چیست و چرا این‌قدر مهم است. سهراب با دقت به شما نگاه می‌کند.</p>
+          <p>«شما با پرسیدن این سؤال نشان دادید که فردی هوشیار هستید. این پول برای سرمایه‌گذاری در یک پروژه خیریه است.»</p>
+          <p>او پیشنهاد همکاری در پروژه را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی معناداری را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "job_offer": {
+          title: "پیشنهاد کار",
+          content: `<p>با تردید پاکت را می‌گیرید و درباره پیشنهاد کار می‌پرسید. سهراب توضیح می‌دهد که به دنبال فردی با صداقت و شجاعت برای همکاری در پروژه‌های خیریه است.</p>
+          <p>«شما با انتخاب‌هایتان نشان دادید که چنین فردی هستید.»</p>
+          <p>شما با خوشحالی پیشنهاد را می‌پذیرید و زندگی جدیدی را به عنوان مدیر پروژه‌های خیریه شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "refuse_reward": {
+          title: "رد پاداش",
+          content: `<p>پاداش را رد می‌کنید و می‌گویید برای پول این کار را نکرده‌اید. سهراب با تعجب به شما نگاه می‌کند.</p>
+          <p>«شما با رد کردن پاداش نشان دادید که انگیزه‌تان کمک به دیگران است، نه پول.»</p>
+          <p>او پیشنهاد همکاری در پروژه‌های خیریه را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی معناداری را شروع می‌کنید.</p>`,
+          isEnding: true
+        },
+        
+        "ask_company": {
+          title: "پرسش هوشمند",
+          content: `<p>می‌پرسید شرکت او دقیقاً چه کاری انجام می‌دهد. سهراب با دقت به شما نگاه می‌کند.</p>
+          <p>«شما با پرسیدن این سؤال نشان دادید که فردی هوشیار هستید. شرکت ما در زمینه پروژه‌های خیریه فعالیت می‌کند.»</p>
+          <p>او پیشنهاد همکاری در پروژه‌ها را به شما می‌دهد. شما با خوشحالی می‌پذیرید و زندگی معناداری را شروع می‌کنید.</p>`,
+          isEnding: true
+        }
+      }
+    };
+  </script>
