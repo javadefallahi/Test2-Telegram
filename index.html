@@ -195,7 +195,6 @@
     <div id="game-content">
       <!-- Initial welcome screen -->
       <div id="welcome-screen">
-        <button class="btn" id="start-game">شروع بازی</button>
         <p>به بازی «سقوط – هزارتوی پول» خوش آمدید. در این سفر، شما با تصمیم‌هایی مواجه می‌شوید که روی سرنوشت مالی و شخصی شما تأثیر می‌گذارند.</p>
         <p>لطفاً قبل از شروع، اطلاعات زیر را وارد کنید:</p>
         
@@ -209,7 +208,9 @@
         </select>
         
         <label for="age">سن:</label>
-        <input type="text" id="age" placeholder="سن خود را وارد کنید">
+        <input type="text" id="age" placeholder="سن خود را وارد کنید" maxlength="2">
+        
+        <button class="btn" id="start-game">شروع بازی</button>
       </div>
       
       <!-- Game screen (initially hidden) -->
@@ -238,6 +239,23 @@
     
     // Initialize game
     document.addEventListener('DOMContentLoaded', function() {
+      const ageInput = document.getElementById("age");
+      const genderSelect = document.getElementById("gender");
+      const startButton = document.getElementById("start-game");
+      
+      // Add event listener for Enter key and two-digit input
+      ageInput.addEventListener('input', function() {
+        if (this.value.length === 2 && genderSelect.value) {
+          startButton.click();
+        }
+      });
+      
+      ageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && this.value && genderSelect.value) {
+          startButton.click();
+        }
+      });
+      
       startButton.addEventListener('click', startGame);
     });
     
@@ -342,15 +360,24 @@
     function calculatePersona() {
       const { impulsivity, morality, creativity, clarity } = gameData.player;
       
-      if (impulsivity > 5 && clarity < 0) {
+      // آتش‌افروز (Firestarter) - High impulsivity, low clarity
+      if (impulsivity >= 3 && clarity <= 0) {
         return "آتش‌افروز";
-      } else if (morality > 5 && clarity > 3) {
+      }
+      // هوشیار (Vigilant) - High morality, high clarity
+      else if (morality >= 3 && clarity >= 2) {
         return "هوشیار";
-      } else if (creativity > 5 && morality > 0) {
+      }
+      // بذرکار (Seed Sower) - High creativity, positive morality
+      else if (creativity >= 3 && morality > 0) {
         return "بذرکار";
-      } else if (clarity > 5 && impulsivity < 0) {
+      }
+      // ناظر (Observer) - High clarity, low impulsivity
+      else if (clarity >= 3 && impulsivity <= 0) {
         return "ناظر";
-      } else {
+      }
+      // عابر (Passerby) - Default persona
+      else {
         return "عابر";
       }
     }
